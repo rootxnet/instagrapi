@@ -333,8 +333,8 @@ class StoryMixin:
                 result = self.private_request(
                     f"media/{story_pk}/list_reel_media_viewer/", params=params
                 )
-                for item in result["users"]:
-                    users.append(extract_user_short(item))
+                for item in result["viewers"]:
+                    users.append(extract_user_short(item["user"]))
                 if amount and len(users) >= amount:
                     break
                 next_max_id = result.get("next_max_id")
